@@ -13,6 +13,7 @@ import com.example.safetykeeper.Fragment.MainFragment;
 import com.example.safetykeeper.Fragment.MapFragment;
 import com.example.safetykeeper.Fragment.SettingFragment;
 import com.example.safetykeeper.R;
+import com.pedro.library.AutoPermissions;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,24 +32,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setFragment();
+        setButton();
+
+        AutoPermissions.Companion.loadAllPermissions(this, 101);
+    }
+
+
+    private void setFragment() {
         fragmentManager = getSupportFragmentManager();
+
         mainFragment = new MainFragment();
         mapFragment = new MapFragment();
         callFragment = new CallFragment();
         settingFragment = new SettingFragment();
 
-        mainFragment_button = findViewById(R.id.mainFragment_button);
-        mapFragment_button = findViewById(R.id.mapFragment_button);
-        callFragment_button = findViewById(R.id.callFragment_button);
-        settingFragment_button = findViewById(R.id.settingFragment_button);
-
-
-        setFragment();
-        setButtonEvent();
-
-    }
-
-    private void setFragment() {
         fragmentManager.beginTransaction().replace(R.id.fragment, mainFragment).commit();
 
         fragmentManager.beginTransaction().add(R.id.fragment, mapFragment).commit();
@@ -61,7 +59,12 @@ public class MainActivity extends AppCompatActivity {
         fragmentManager.beginTransaction().hide(settingFragment).commit();
     }
 
-    private void setButtonEvent() {
+    private void setButton() {
+        mainFragment_button = findViewById(R.id.mainFragment_button);
+        mapFragment_button = findViewById(R.id.mapFragment_button);
+        callFragment_button = findViewById(R.id.callFragment_button);
+        settingFragment_button = findViewById(R.id.settingFragment_button);
+
         mainFragment_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
