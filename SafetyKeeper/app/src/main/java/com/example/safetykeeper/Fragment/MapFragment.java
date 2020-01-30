@@ -23,6 +23,7 @@ import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.pedro.library.AutoPermissions;
 import com.pedro.library.AutoPermissionsListener;
 
@@ -32,7 +33,8 @@ public class MapFragment extends Fragment implements AutoPermissionsListener {
     private Activity mActivity;
     private SupportMapFragment mapDisplayFragment;
     private Button locationRequestButton;
-    GoogleMap map;
+    private MarkerOptions myLocationMarker;
+    private GoogleMap map;
 
     @Nullable
     @Override
@@ -42,6 +44,7 @@ public class MapFragment extends Fragment implements AutoPermissionsListener {
 
         final ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_map,container,false);
 
+        // Fragment안에 Fragment를 넣을 때 getChildFragmentManager()
         mapDisplayFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
 
         locationRequestButton = rootView.findViewById(R.id.locationRequestButton);
@@ -57,6 +60,7 @@ public class MapFragment extends Fragment implements AutoPermissionsListener {
             public void onMapReady(GoogleMap googleMap) {
                 map = googleMap;
                 map.setMyLocationEnabled(true);
+
             }
         });
 
@@ -130,6 +134,21 @@ public class MapFragment extends Fragment implements AutoPermissionsListener {
         private void showCurrentLocation(Double latitude, Double longitude) {
             LatLng curPoint = new LatLng(latitude, longitude);
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(curPoint, 17));
+
+            showMyLocationMarker(curPoint);
+        }
+
+        private void showMyLocationMarker(LatLng curPoint) {
+            if(myLocationMarker == null) {
+                myLocationMarker = new MarkerOptions();
+                myLocationMarker.position(curPoint);
+                myLocationMarker.title("내 위치\n");
+                myLocationMarker.snippet("GPS로 확인한 위치");
+                //myLocationMarker.icon();
+                map.addMarker(myLocationMarker);
+            } else {
+                myLocationMarker.position(curPoint);
+            }
         }
 
         @Override
@@ -164,4 +183,5 @@ public class MapFragment extends Fragment implements AutoPermissionsListener {
     public void onGranted(int i, String[] strings) {
         Toast.makeText(getContext(),"permissions granted : "+strings.length, Toast.LENGTH_LONG).show();
     }
+
 }
