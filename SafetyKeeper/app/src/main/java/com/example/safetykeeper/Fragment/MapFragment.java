@@ -56,6 +56,7 @@ public class MapFragment extends Fragment implements AutoPermissionsListener {
             @Override
             public void onMapReady(GoogleMap googleMap) {
                 map = googleMap;
+                map.setMyLocationEnabled(true);
             }
         });
 
@@ -99,6 +100,25 @@ public class MapFragment extends Fragment implements AutoPermissionsListener {
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if(map != null) {
+            map.setMyLocationEnabled(true);
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        if(map != null) {
+            map.setMyLocationEnabled(false);
+        }
+    }
+
+
     class GPSListener implements LocationListener {
         public void onLocationChanged(Location location) {
             double latitude = location.getLatitude();
@@ -109,7 +129,7 @@ public class MapFragment extends Fragment implements AutoPermissionsListener {
 
         private void showCurrentLocation(Double latitude, Double longitude) {
             LatLng curPoint = new LatLng(latitude, longitude);
-            map.animateCamera(CameraUpdateFactory.newLatLngZoom(curPoint, 15));
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(curPoint, 17));
         }
 
         @Override
