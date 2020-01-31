@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/personItemLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- 친구 이미지를 원형으로 표현함 -->
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageView"
+            android:layout_width="43dp"
+            android:layout_height="45dp"
+            android:padding="5dp"
+            android:src="@android:drawable/sym_def_app_icon" />
+
+        <TextView
+            android:id="@+id/personTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#00ff0000"
+            android:gravity="left"
+            android:text="이름"
+            android:textColor="#000000"
+            android:textSize="25sp" />
+
+
+    </LinearLayout>
+</LinearLayout>

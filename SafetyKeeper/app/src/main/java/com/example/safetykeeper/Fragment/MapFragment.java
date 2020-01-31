@@ -9,13 +9,18 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.safetykeeper.Adapter.PersonAdapter;
+import com.example.safetykeeper.Model.Person;
 import com.example.safetykeeper.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -27,14 +32,19 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.pedro.library.AutoPermissions;
 import com.pedro.library.AutoPermissionsListener;
 
+import java.util.ArrayList;
+
 
 public class MapFragment extends Fragment implements AutoPermissionsListener {
 
     private Activity mActivity;
     private SupportMapFragment mapDisplayFragment;
     private Button locationRequestButton;
+    private RecyclerView friendListRecyclerView;
     private MarkerOptions myLocationMarker;
     private GoogleMap map;
+
+    private Animation translateBottomAnimation;
 
     @Nullable
     @Override
@@ -54,6 +64,23 @@ public class MapFragment extends Fragment implements AutoPermissionsListener {
                 startLocationService();
             }
         });
+
+        ArrayList<Person> items = new ArrayList<>();
+        for (int i=0; i<5; ++i) {
+            items.add(new Person("친구 "+i));
+        }
+
+
+        friendListRecyclerView = rootView.findViewById(R.id.friendListRecyclerView);
+
+        friendListRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        // 리사이클러뷰에 어댑터로 PersonAdapter 지정.
+        PersonAdapter adapter = new PersonAdapter(getContext(), items);
+        friendListRecyclerView.setAdapter(adapter);
+
+
+
 
         mapDisplayFragment.getMapAsync(new OnMapReadyCallback() {
             @Override
@@ -76,6 +103,10 @@ public class MapFragment extends Fragment implements AutoPermissionsListener {
                 startLocationService();
             }
         });
+
+
+        // 친구 목록 페이지 슬라이딩
+      //  translateBottomAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.)
 
 
         return rootView;
