@@ -7,7 +7,9 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.viewpager.widget.ViewPager;
 
+import com.example.safetykeeper.Adapter.ViewPagerAdapter;
 import com.example.safetykeeper.Fragment.CallFragment;
 import com.example.safetykeeper.Fragment.MainFragment;
 import com.example.safetykeeper.Fragment.MapFragment;
@@ -27,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
 
     private Button mainFragment_button, mapFragment_button, callFragment_button, settingFragment_button;
 
+    private ViewPager viewPager;
+    private ViewPagerAdapter viewPagerAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +46,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void setFragment() {
         fragmentManager = getSupportFragmentManager();
+        /*
+        viewPagerAdapter = new ViewPagerAdapter(fragmentManager,4);
+        viewPager = findViewById(R.id.viewPager);
+
+        viewPager.setAdapter(viewPagerAdapter);
+         */
 
         mainFragment = new MainFragment();
         mapFragment = new MapFragment();
