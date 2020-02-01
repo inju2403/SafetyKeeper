@@ -66,7 +66,7 @@ public class MapFragment extends Fragment implements AutoPermissionsListener {
         });
 
         ArrayList<Person> items = new ArrayList<>();
-        for (int i=0; i<5; ++i) {
+        for (int i=0; i<30; ++i) {
             items.add(new Person("친구 "+i));
         }
 
