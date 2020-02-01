@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.widget.Button;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -43,6 +44,7 @@ public class MapFragment extends Fragment implements AutoPermissionsListener {
     private RecyclerView friendListRecyclerView;
     private MarkerOptions myLocationMarker;
     private GoogleMap map;
+    private Switch onOffSwitch;
 
     private Animation translateBottomAnimation;
 
@@ -81,7 +83,6 @@ public class MapFragment extends Fragment implements AutoPermissionsListener {
 
 
 
-
         mapDisplayFragment.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(GoogleMap googleMap) {
@@ -103,10 +104,6 @@ public class MapFragment extends Fragment implements AutoPermissionsListener {
                 startLocationService();
             }
         });
-
-
-        // 친구 목록 페이지 슬라이딩
-      //  translateBottomAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.)
 
 
         return rootView;
