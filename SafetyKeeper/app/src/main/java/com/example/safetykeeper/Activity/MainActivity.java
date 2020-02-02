@@ -12,7 +12,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.safetykeeper.Adapter.ViewPagerAdapter;
 import com.example.safetykeeper.Fragment.CallFragment;
 import com.example.safetykeeper.Fragment.MainFragment;
-import com.example.safetykeeper.Fragment.MapFragment;
+import com.example.safetykeeper.Fragment.MyMapFragment;
 import com.example.safetykeeper.Fragment.SettingFragment;
 import com.example.safetykeeper.R;
 import com.pedro.library.AutoPermissions;
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int FRAG_SETTING = 3;
 
     private FragmentManager fragmentManager;
-    private Fragment mainFragment, mapFragment, callFragment, settingFragment;
+    private Fragment mainFragment, myMapFragment, callFragment, settingFragment;
 
     private Button mainFragment_button, mapFragment_button, callFragment_button, settingFragment_button;
 
@@ -54,14 +54,14 @@ public class MainActivity extends AppCompatActivity {
          */
 
         mainFragment = new MainFragment();
-        mapFragment = new MapFragment();
+        myMapFragment = new MyMapFragment(this);
         callFragment = new CallFragment();
         settingFragment = new SettingFragment();
 
         fragmentManager.beginTransaction().replace(R.id.fragment, mainFragment).commit();
 
-        fragmentManager.beginTransaction().add(R.id.fragment, mapFragment).commit();
-        fragmentManager.beginTransaction().hide(mapFragment).commit();
+        fragmentManager.beginTransaction().add(R.id.fragment, myMapFragment).commit();
+        fragmentManager.beginTransaction().hide(myMapFragment).commit();
 
         fragmentManager.beginTransaction().add(R.id.fragment, callFragment).commit();
         fragmentManager.beginTransaction().hide(callFragment).commit();
@@ -106,28 +106,28 @@ public class MainActivity extends AppCompatActivity {
         switch(next) {
             case FRAG_MAIN:
                 fragmentManager.beginTransaction().show(mainFragment).commit();
-                fragmentManager.beginTransaction().hide(mapFragment).commit();
+                fragmentManager.beginTransaction().hide(myMapFragment).commit();
                 fragmentManager.beginTransaction().hide(callFragment).commit();
                 fragmentManager.beginTransaction().hide(settingFragment).commit();
                 break;
 
             case FRAG_MAP:
                 fragmentManager.beginTransaction().hide(mainFragment).commit();
-                fragmentManager.beginTransaction().show(mapFragment).commit();
+                fragmentManager.beginTransaction().show(myMapFragment).commit();
                 fragmentManager.beginTransaction().hide(callFragment).commit();
                 fragmentManager.beginTransaction().hide(settingFragment).commit();
                 break;
 
             case FRAG_CALL:
                 fragmentManager.beginTransaction().hide(mainFragment).commit();
-                fragmentManager.beginTransaction().hide(mapFragment).commit();
+                fragmentManager.beginTransaction().hide(myMapFragment).commit();
                 fragmentManager.beginTransaction().show(callFragment).commit();
                 fragmentManager.beginTransaction().hide(settingFragment).commit();
                 break;
 
             case FRAG_SETTING:
                 fragmentManager.beginTransaction().hide(mainFragment).commit();
-                fragmentManager.beginTransaction().hide(mapFragment).commit();
+                fragmentManager.beginTransaction().hide(myMapFragment).commit();
                 fragmentManager.beginTransaction().hide(callFragment).commit();
                 fragmentManager.beginTransaction().show(settingFragment).commit();
                 break;

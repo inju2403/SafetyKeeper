@@ -19,12 +19,6 @@ android {
     }
 }
 
-allprojects {
-    repositories {
-        maven { url 'https://jitpack.io' }
-    }
-}
-
 dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'com.android.support:design:29.0.0'
@@ -41,11 +35,19 @@ dependencies {
     implementation 'com.android.support:support-media-compat:29.0.0'
     implementation 'com.android.support:support-v4:29.0.0'
 
-    repositories {
-        mavenCentral()
-    }
+
     compile 'com.sothree.slidinguppanel:library:3.4.0'
     implementation 'com.kyleduo.switchbutton:library:2.0.0'
+
+    // 네이버 지도 SDK
+    implementation 'com.naver.maps:map-sdk:3.7.0'
+    implementation 'com.android.support:appcompat-v7:27.0.0'
+
+    implementation('com.naver.maps:map-sdk:3.7.0') {
+        exclude group: 'com.android.support'
+    }
+    implementation 'com.google.android.gms:play-services-location:16.0.0'
+
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -54,5 +56,5 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    //implementation 'com.google.android.gms:play-services-maps:17.0.0'
 }

@@ -2,51 +2,58 @@ package com.example.safetykeeper.Fragment;
 
 import android.app.Activity;
 import android.content.Context;
-import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
 import android.widget.Button;
-import android.widget.Switch;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.safetykeeper.Adapter.PersonAdapter;
 import com.example.safetykeeper.Model.Person;
 import com.example.safetykeeper.R;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapsInitializer;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.pedro.library.AutoPermissions;
-import com.pedro.library.AutoPermissionsListener;
+import com.naver.maps.map.LocationSource;
+import com.naver.maps.map.LocationTrackingMode;
+import com.naver.maps.map.MapFragment;
+import com.naver.maps.map.MapView;
+import com.naver.maps.map.NaverMap;
+import com.naver.maps.map.OnMapReadyCallback;
+import com.naver.maps.map.util.FusedLocationSource;
 
 import java.util.ArrayList;
 
 
-public class MapFragment extends Fragment implements AutoPermissionsListener {
+public class MyMapFragment extends Fragment implements OnMapReadyCallback {
 
     private Activity mActivity;
-    private SupportMapFragment mapDisplayFragment;
+    private MapFragment mapDisplayFragment;
     private Button locationRequestButton;
     private RecyclerView friendListRecyclerView;
-    private MarkerOptions myLocationMarker;
-    private GoogleMap map;
-    private Switch onOffSwitch;
 
-    private Animation translateBottomAnimation;
+    // private MarkerOptions myLocationMarker;
+    // private GoogleMap map;
+    private MapView mapView;
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1000;
+    private FusedLocationSource locationSource;
+    @NonNull
+    private final Context context;
+    @Nullable
+    private final LocationManager locationManager;
+    @Nullable
+    private LocationSource.OnLocationChangedListener listener;
+
+    public MyMapFragment(@NonNull Context context) {
+        this.context = context;
+        locationManager = (LocationManager)context.getSystemService(Context.LOCATION_SERVICE);
+    }
+
 
     @Nullable
     @Override
@@ -57,21 +64,30 @@ public class MapFragment extends Fragment implements AutoPermissionsListener {
         final ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_map,container,false);
 
         // Fragment안에 Fragment를 넣을 때 getChildFragmentManager()
-        mapDisplayFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
+      //  mapDisplayFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
+
+
+        FragmentManager fm = getChildFragmentManager();
+        mapDisplayFragment = (MapFragment)fm.findFragmentById(R.id.map);
+        if (mapDisplayFragment == null) {
+            mapDisplayFragment = MapFragment.newInstance();
+            fm.beginTransaction().add(R.id.map, mapDisplayFragment).commit();
+        }
+
+        mapDisplayFragment.getMapAsync(this);
 
         locationRequestButton = rootView.findViewById(R.id.locationRequestButton);
-        locationRequestButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startLocationService();
-            }
-        });
 
+        locationSource = new FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE);
+
+
+
+
+        // 리사이클러뷰 코드
         ArrayList<Person> items = new ArrayList<>();
         for (int i=0; i<30; ++i) {
             items.add(new Person("친구 "+i));
         }
-
 
         friendListRecyclerView = rootView.findViewById(R.id.friendListRecyclerView);
 
@@ -81,7 +97,14 @@ public class MapFragment extends Fragment implements AutoPermissionsListener {
         PersonAdapter adapter = new PersonAdapter(getContext(), items);
         friendListRecyclerView.setAdapter(adapter);
 
-
+        /* 구글 맵
+        locationRequestButton = rootView.findViewById(R.id.locationRequestButton);
+        locationRequestButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startLocationService();
+            }
+        });
 
         mapDisplayFragment.getMapAsync(new OnMapReadyCallback() {
             @Override
@@ -98,17 +121,36 @@ public class MapFragment extends Fragment implements AutoPermissionsListener {
             e.printStackTrace();
         }
 
-        locationRequestButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startLocationService();
-            }
-        });
+         */
 
 
         return rootView;
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String[] permissions,  @NonNull int[] grantResults) {
+        if (locationSource.onRequestPermissionsResult(
+                requestCode, permissions, grantResults)) {
+            return;
+        }
+        super.onRequestPermissionsResult(
+                requestCode, permissions, grantResults);
+    }
+
+    @Override
+    public void onMapReady(@NonNull NaverMap naverMap) {
+        naverMap.setLocationSource(locationSource);
+        naverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
+        /*
+        UiSettings uiSettings = naverMap.getUiSettings();
+        uiSettings.setLocationButtonEnabled(true);
+        
+         */
+    }
+
+
+ /* 구글 맵
     private void startLocationService() {
         LocationManager manager = (LocationManager) mActivity.getSystemService(Context.LOCATION_SERVICE);
 
@@ -131,6 +173,7 @@ public class MapFragment extends Fragment implements AutoPermissionsListener {
             e.printStackTrace();
         }
     }
+
 
     @Override
     public void onResume() {
@@ -212,4 +255,6 @@ public class MapFragment extends Fragment implements AutoPermissionsListener {
         Toast.makeText(getContext(),"permissions granted : "+strings.length, Toast.LENGTH_LONG).show();
     }
 
+
+     */
 }
