@@ -42,6 +42,7 @@ public class MyMapFragment extends Fragment implements OnMapReadyCallback {
     private MapView mapView;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1000;
     private FusedLocationSource locationSource;
+
     @NonNull
     private final Context context;
     @Nullable
@@ -145,7 +146,7 @@ public class MyMapFragment extends Fragment implements OnMapReadyCallback {
         /*
         UiSettings uiSettings = naverMap.getUiSettings();
         uiSettings.setLocationButtonEnabled(true);
-        
+
          */
     }
 
