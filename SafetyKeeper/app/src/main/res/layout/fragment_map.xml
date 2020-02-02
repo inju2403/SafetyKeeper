@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Fragment.MapFragment">
+    tools:context=".Fragment.MyMapFragment">
 
     <com.sothree.slidinguppanel.SlidingUpPanelLayout
         android:id="@+id/sliding_layout"
@@ -31,11 +31,13 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <!-- 구글 맵 -->
+            <!-- class="com.google.android.gms.maps.SupportMapFragment" -->
             <fragment
                 android:id="@+id/map"
-                class="com.google.android.gms.maps.SupportMapFragment"
+                android:name="com.naver.maps.map.MapFragment"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="match_parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
