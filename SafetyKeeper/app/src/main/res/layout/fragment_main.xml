@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".Fragment.MainFragment">
 
+<<<<<<< HEAD
     //com.ssomai.android.scalablelayout.ScalableLayout
     //   android:layout_width="match_parent"
     //    android:layout_height="wrap_content"
@@ -56,6 +57,8 @@
         </androidx.recyclerview.widget.RecyclerView>
     </RelativeLayout>
     //com.ssomai.android.scalablelayout.ScalableLayout
+=======
+>>>>>>> adbba6103e5c67161a0cadfecaeb6140503796ec
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"

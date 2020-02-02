@@ -1,7 +1,10 @@
 package com.example.safetykeeper.Fragment;
 
 import android.app.Activity;
+<<<<<<< HEAD
 import android.content.Context;
+=======
+>>>>>>> adbba6103e5c67161a0cadfecaeb6140503796ec
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +13,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+<<<<<<< HEAD
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,6 +27,13 @@ import retrofit2.http.HEAD;
 
 public class MainFragment extends Fragment {
     private ArrayList<Profile> items = new ArrayList<>();
+=======
+
+import com.example.safetykeeper.R;
+
+public class MainFragment extends Fragment {
+
+>>>>>>> adbba6103e5c67161a0cadfecaeb6140503796ec
     private Activity mActivity;
 
     @Nullable
@@ -30,6 +41,7 @@ public class MainFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mActivity = getActivity();
         setHasOptionsMenu(true);
+<<<<<<< HEAD
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_main,container,false);
         list();
 
@@ -55,4 +67,12 @@ public class MainFragment extends Fragment {
         items.add(new Profile(R.drawable.ic_launcher_background,"혜미"));
         items.add(new Profile(R.drawable.ic_launcher_foreground,"찬"));
     }
+=======
+
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_main,container,false);
+
+
+        return rootView;
+    }
+>>>>>>> adbba6103e5c67161a0cadfecaeb6140503796ec
 }
