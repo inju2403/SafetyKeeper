@@ -5,6 +5,60 @@
     android:layout_height="match_parent"
     tools:context=".Fragment.MainFragment">
 
+<<<<<<< HEAD
+    //com.ssomai.android.scalablelayout.ScalableLayout
+    //   android:layout_width="match_parent"
+    //    android:layout_height="wrap_content"
+    //   android:background="@android:color/darker_gray"
+    //   android:layout_above="@+id/main_textview"
+    //   app:scale_base_width="400"
+    //   app:scale_base_height="200"
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <Switch
+            android:id="@+id/onOff"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true" />
+
+        <RelativeLayout
+            android:id="@+id/myProfileItemList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="100dp"
+            android:layout_centerHorizontal="true">
+
+            <ImageView
+                android:id="@+id/myProfileImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_launcher_foreground" />
+
+            <TextView
+                android:id="@+id/myProfileName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/myProfileImage"
+                android:layout_centerHorizontal="true"
+                android:text="최혜미" />
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/profileRecyclerView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/myProfileItemList"
+            android:layout_centerHorizontal="true"
+            android:paddingTop="100dp"
+            tools:listitem="@layout/profile_item">
+        </androidx.recyclerview.widget.RecyclerView>
+    </RelativeLayout>
+    //com.ssomai.android.scalablelayout.ScalableLayout
+=======
+>>>>>>> adbba6103e5c67161a0cadfecaeb6140503796ec
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
