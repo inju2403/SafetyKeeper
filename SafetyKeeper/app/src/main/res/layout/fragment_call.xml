@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CallFragment.CallFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/CallFragment_Friend_RecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20sp"></androidx.recyclerview.widget.RecyclerView>
+
+        <RelativeLayout
+            android:id="@+id/CallFragment_Button_RelativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="60sp"
+            >
+
+            <ImageButton
+                android:id="@+id/CallFragment_TimePick_ImageButton"
+                android:layout_width="80sp"
+                android:layout_height="80sp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="40sp"
+                >
+            </ImageButton>
+
+            <ImageButton
+                android:id="@+id/CallFragment_Call_ImageButton"
+                android:layout_width="80sp"
+                android:layout_height="80sp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="40sp"
+                >
+            </ImageButton>
+        </RelativeLayout>
+
+    </RelativeLayout>
+</FrameLayout>
