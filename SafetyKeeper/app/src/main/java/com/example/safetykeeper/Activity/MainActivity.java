@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import com.example.safetykeeper.Fragment.CallFragment;
+import com.example.safetykeeper.CallFragment.CallFragment;
 import com.example.safetykeeper.Fragment.MainFragment;
 import com.example.safetykeeper.Fragment.MyMapFragment;
 import com.example.safetykeeper.Fragment.SettingFragment;

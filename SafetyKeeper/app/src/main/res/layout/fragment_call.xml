@@ -3,12 +3,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.CallFragment">
+    tools:context=".CallFragment.CallFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="call" />
+        android:layout_height="match_parent">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/CallFragment_Friend_RecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20sp"></androidx.recyclerview.widget.RecyclerView>
+
+        <RelativeLayout
+            android:id="@+id/CallFragment_Button_RelativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="60sp"
+            >
+
+            <ImageButton
+                android:id="@+id/CallFragment_TimePick_ImageButton"
+                android:layout_width="80sp"
+                android:layout_height="80sp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="40sp"
+                >
+            </ImageButton>
+
+            <ImageButton
+                android:id="@+id/CallFragment_Call_ImageButton"
+                android:layout_width="80sp"
+                android:layout_height="80sp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="40sp"
+                >
+            </ImageButton>
+        </RelativeLayout>
+
+    </RelativeLayout>
 </FrameLayout>
