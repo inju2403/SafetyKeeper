@@ -1,19 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+=======
+>>>>>>> aa377bfac9a7c2633fe7c5f39a4d8cbf4e440602
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragment.MainFragment">
 
 
+<<<<<<< HEAD
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+=======
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+>>>>>>> aa377bfac9a7c2633fe7c5f39a4d8cbf4e440602
         <Switch
             android:id="@+id/onOff"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentTop="true"
+<<<<<<< HEAD
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/myProfileImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="180dp"
+            android:src="@drawable/ic_launcher_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/myProfileName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/myProfileImage"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="300dp"
+            android:text="최혜미"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+=======
             android:layout_alignParentRight="true" />
 
         <RelativeLayout
@@ -37,17 +79,28 @@
                 android:layout_centerHorizontal="true"
                 android:text="최혜미" />
         </RelativeLayout>
+>>>>>>> aa377bfac9a7c2633fe7c5f39a4d8cbf4e440602
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/profileRecyclerView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+<<<<<<< HEAD
+            android:layout_marginTop="280dp"
+            android:paddingTop="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/profile_item"></androidx.recyclerview.widget.RecyclerView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+=======
             android:layout_below="@+id/myProfileItemList"
             android:layout_centerHorizontal="true"
             android:paddingTop="100dp"
             tools:listitem="@layout/profile_item">
         </androidx.recyclerview.widget.RecyclerView>
     </RelativeLayout>
+>>>>>>> aa377bfac9a7c2633fe7c5f39a4d8cbf4e440602
 
 
 </FrameLayout>
