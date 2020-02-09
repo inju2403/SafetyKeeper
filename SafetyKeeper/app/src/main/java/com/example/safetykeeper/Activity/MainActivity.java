@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private Fragment mainFragment, myMapFragment, callFragment, settingFragment;
     private BottomNavigationView bottom_bar;
 
+    //test
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
