@@ -25,8 +25,11 @@
         android:background="@drawable/border"
         app:elevation="8dp"
         app:itemIconSize="24dp"
+<<<<<<< HEAD
         app:itemIconTint="@drawable/bottom_navigation_item_color"
         app:itemTextColor="@drawable/bottom_navigation_item_color"
+=======
+>>>>>>> aa377bfac9a7c2633fe7c5f39a4d8cbf4e440602
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

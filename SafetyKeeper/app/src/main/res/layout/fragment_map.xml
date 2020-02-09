@@ -54,13 +54,22 @@
                 android:id="@+id/friendListTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:text="친구"
                 android:textSize="30sp" />
+=======
+                android:textSize="30sp"
+                android:text="친구" />
+>>>>>>> aa377bfac9a7c2633fe7c5f39a4d8cbf4e440602
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/friendListRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+<<<<<<< HEAD
+=======
+                android:layout_gravity="bottom"
+>>>>>>> aa377bfac9a7c2633fe7c5f39a4d8cbf4e440602
                 tools:listitem="@layout/person_item">
 
             </androidx.recyclerview.widget.RecyclerView>

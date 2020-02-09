@@ -19,15 +19,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.safetykeeper.Adapter.PersonAdapter;
 import com.example.safetykeeper.Model.Person;
 import com.example.safetykeeper.R;
+<<<<<<< HEAD
 import com.naver.maps.geometry.LatLng;
+=======
+>>>>>>> aa377bfac9a7c2633fe7c5f39a4d8cbf4e440602
 import com.naver.maps.map.LocationSource;
 import com.naver.maps.map.LocationTrackingMode;
 import com.naver.maps.map.MapFragment;
 import com.naver.maps.map.MapView;
 import com.naver.maps.map.NaverMap;
 import com.naver.maps.map.OnMapReadyCallback;
+<<<<<<< HEAD
 import com.naver.maps.map.overlay.Marker;
 import com.naver.maps.map.overlay.OverlayImage;
+=======
+>>>>>>> aa377bfac9a7c2633fe7c5f39a4d8cbf4e440602
 import com.naver.maps.map.util.FusedLocationSource;
 
 import java.util.ArrayList;
@@ -40,7 +46,10 @@ public class MyMapFragment extends Fragment implements OnMapReadyCallback {
     private Button locationRequestButton;
     private RecyclerView friendListRecyclerView;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> aa377bfac9a7c2633fe7c5f39a4d8cbf4e440602
     // private MarkerOptions myLocationMarker;
     // private GoogleMap map;
     private MapView mapView;
@@ -70,11 +79,14 @@ public class MyMapFragment extends Fragment implements OnMapReadyCallback {
         // Fragment안에 Fragment를 넣을 때 getChildFragmentManager()
       //  mapDisplayFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
 
+<<<<<<< HEAD
         /*Marker marker = new Marker();
         marker.setPosition(new LatLng(37.5670135, 126.9783740));
         marker.setMap(naverMap);
 
         marker.setIcon(OverlayImage.fromResource(R.drawable.marker_icon));*/
+=======
+>>>>>>> aa377bfac9a7c2633fe7c5f39a4d8cbf4e440602
 
         FragmentManager fm = getChildFragmentManager();
         mapDisplayFragment = (MapFragment)fm.findFragmentById(R.id.map);
@@ -229,7 +241,10 @@ public class MyMapFragment extends Fragment implements OnMapReadyCallback {
             } else {
                 myLocationMarker.position(curPoint);
             }
+<<<<<<< HEAD
             
+=======
+>>>>>>> aa377bfac9a7c2633fe7c5f39a4d8cbf4e440602
         }
 
         @Override
