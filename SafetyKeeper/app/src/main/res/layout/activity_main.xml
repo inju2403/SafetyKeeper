@@ -16,48 +16,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewPager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
     </FrameLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_bar"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
+        android:layout_height="56dp"
+        android:background="@drawable/border"
+        app:elevation="8dp"
+        app:itemIconSize="24dp"
+        app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/border">
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/main_activity_bottom_menu" />
 
-        <Button
-            android:id="@+id/mainFragment_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="사람들" />
-
-        <Button
-            android:id="@+id/mapFragment_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="지도" />
-
-        <Button
-            android:id="@+id/callFragment_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="통화" />
-
-        <Button
-            android:id="@+id/settingFragment_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="설정" />
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

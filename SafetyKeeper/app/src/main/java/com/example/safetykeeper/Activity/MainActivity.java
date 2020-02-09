@@ -1,20 +1,19 @@
 package com.example.safetykeeper.Activity;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.viewpager.widget.ViewPager;
 
-import com.example.safetykeeper.Adapter.ViewPagerAdapter;
-import com.example.safetykeeper.Fragment.CallFragment;
+import com.example.safetykeeper.CallFragment.CallFragment;
 import com.example.safetykeeper.Fragment.MainFragment;
 import com.example.safetykeeper.Fragment.MyMapFragment;
 import com.example.safetykeeper.Fragment.SettingFragment;
 import com.example.safetykeeper.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.pedro.library.AutoPermissions;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,19 +25,16 @@ public class MainActivity extends AppCompatActivity {
 
     private FragmentManager fragmentManager;
     private Fragment mainFragment, myMapFragment, callFragment, settingFragment;
+    private BottomNavigationView bottom_bar;
 
-    private Button mainFragment_button, mapFragment_button, callFragment_button, settingFragment_button;
-
-    private ViewPager viewPager;
-    private ViewPagerAdapter viewPagerAdapter;
-
+    //test
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         setFragment();
-        setButton();
+        setBottomNavigation();
 
         AutoPermissions.Companion.loadAllPermissions(this, 101);
     }
@@ -46,12 +42,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void setFragment() {
         fragmentManager = getSupportFragmentManager();
-        /*
-        viewPagerAdapter = new ViewPagerAdapter(fragmentManager,4);
-        viewPager = findViewById(R.id.viewPager);
-
-        viewPager.setAdapter(viewPagerAdapter);
-         */
 
         mainFragment = new MainFragment();
         myMapFragment = new MyMapFragment(this);
@@ -70,36 +60,31 @@ public class MainActivity extends AppCompatActivity {
         fragmentManager.beginTransaction().hide(settingFragment).commit();
     }
 
-    private void setButton() {
-        mainFragment_button = findViewById(R.id.mainFragment_button);
-        mapFragment_button = findViewById(R.id.mapFragment_button);
-        callFragment_button = findViewById(R.id.callFragment_button);
-        settingFragment_button = findViewById(R.id.settingFragment_button);
-
-        mainFragment_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                switchFragement(FRAG_MAIN);
-            }
-        });
-        mapFragment_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                switchFragement(FRAG_MAP);
-            }
-        });
-        callFragment_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                switchFragement(FRAG_CALL);
-            }
-        });
-        settingFragment_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                switchFragement(FRAG_SETTING);
-            }
-        });
+    private void setBottomNavigation() {
+        bottom_bar = findViewById(R.id.bottom_bar);
+        bottom_bar.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                        switch (menuItem.getItemId()) {
+                            case R.id.main_tab:
+                                switchFragement(FRAG_MAIN);
+                                return true;
+                            case R.id.map_tab:
+                                switchFragement(FRAG_MAP);
+                                return true;
+                            case R.id.call_tab:
+                                switchFragement(FRAG_CALL);
+                                return true;
+                            case R.id.setting_tab:
+                                switchFragement(FRAG_SETTING);
+                                return true;
+                            default:
+                                return false;
+                        }
+                    }
+                }
+        );
     }
 
     private void switchFragement(final int next) {
